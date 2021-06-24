@@ -1,67 +1,101 @@
-# ****String****
-message1 = 'Hello World'        # String in Single Quotes
-message2 = "Hello World"        # String in Double Quotes
+# ****Lesson 3: Lists, Tuples, Sets****
+# ##### LISTS #####
+course = ['History', 'Mathematics', 'Science', 'Computer Science']
 
-message3_1 = 'Annay\'s Plan'    # String of Single Quotes containing Single Quotes
-message3_2 = "Annay's Plan"     # String of Double Quotes containing Single Quotes
+# ****Accessing Values and Length of the List****
+len(course)
+course[0]               # Gets the Item at the 1st index
+course[2]               # Gets the Item at the 3rd index
+course[len(course)-1]   # Gets the Item at the last index
+course[-1]              # Gets the Item at the last index
+course[0:2]             # Gets the Items from 1st to 2nd index
+course[:2]              # Gets the Items from 1st to 2nd index
+course[2:]              # Gets the Items from 3rd to the last
 
-message4_1 = '"Double" Trouble'  # String of Single Quotes containting Single Quotes
-# String of Double Quotes containing Double Quotes
-message4_2 = "\"Double\" Trouble"
+# ****Adding items into a list****
+course.append('Art')            # Adds the item at the end
+course.insert(3, 'Sociology')   # Inserts the item at the specific index
 
-# Notes: Backslash (\) is used as an escape Sequence
+basic_science = ["Physics", 'Chemistry', 'Biology']
+course.insert(0, basic_science)  # Inserts the list at the specific index
+course.append(basic_science)     # Adds the list at the end
+course.extend(basic_science)     # Adds elements from the second list
 
-# ****Multiline String****
-paragraph = """
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-    when an unknown printer took a galley of type and scrambled it to make a type
-    specimen book. It has survived not only five centuries, but also the leap into 
-    electronic typesetting, remaining essentially unchanged. It was popularised in the 
-    1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-    and more recently with desktop publishing software like Aldus PageMaker including versions 
-    of Lorem Ipsum.
-"""
+# ****Removing items from the list****
+course.remove(basic_science)    # Removes the specified item
+course.pop()                    # Removes and returns the last item
+course.remove(basic_science)    # Removes the specified item
 
-# ****Slicing Strings****
-name = "Annay Paul"
-name[0]     # Returns the character on the 0th index
-name[1]     # Returns the character on the 1st index
-name[-1]    # Returns the character on the last index
-name[:4]    # Returns the set of characters from the beginning up to the 4th index but not including the 4th index
-name[2:]    # Returns the set of characters from the 2nd index till the end
-name[2:4]   # Returns the set of characters from the 2nd index till the 4th index but not including the 4th index
+# ****List Methods****
+course.reverse()    # Reverses a given list (in-place)
 
-# ****Getting Length of Strings****
-len(name)   # len() -> built in function that returns the number of characters in the string
+nums = [4, 5, 1, 3, 2]
+nums.sort()         # Sorts a given list in ascending order (in-place)
+course.sort()       # Sorts a given list in alphabetical order (in-place)
+# Returns a new sorted list (not in-place and built-in)
+nums_sorted = sorted(nums)
 
-# ****Converting into lower case****
-name_lower = name.lower()    # Returns a new string with all characters in lower case
+# ****List Methods 2****
+course.index('Sociology')   # Returns index of the item
+# course.index('BBS')         # Throws error, item not present
+'BBS' in course             # Returns True/False
 
-# ****Converting into upper case****
-name_upper = name.upper()    # Returns a new string with all characters in upper case
+# ****Looping through Lists****
+for item in course:
+    # print(item)
+    pass
 
-# ****Counting how many times a character/substring appears****
-name.count('n')  # Returns the number of 'n' in the name 'Annay Paul'
-name.count('au')  # Returns the number of 'au' in the name 'Annay Paul'
+for index, item in enumerate(course):  # For getting indexes
+    # print(index, item)
+    pass
 
-# ****Searching the index of a character/substring ****
-name.find('n')   # Returns the index of the 1st occurence of the letter 'n'
-name.find('au')  # Returns the index of the 1st occurence of the substring 'au'
-name.find('x')   # Returns -1 if not found
+# ****Joining and Splitting Lists into strings****
+course_str = ', '.join(course)      # Joins items on the string
+course_str = '-'.join(course)       # Joins items on the string
+new_course = course_str.split('-')  # Splits items on the string
 
-# ****Replacing a section of a string****
-message1_new = message1.replace('World', 'Universe')
+# ****List Memory Allocation and Mutability****
+list_1 = [1, 2, 3, 4]
+list_2 = list_1
 
-# ****String concatation****
-greeting = 'Hello'
-message = greeting + ', ' + name    # Returns 'Hello, Annay Paul'
+# print(list_1)
+# print(list_2)
+list_1[0] = 5
 
-# ****Fomratted Strings****
-message = '{}, {}'.format(greeting, name)   # {} act as place holders
-message = f'{greeting}, {name}'  # f-strings, effective for python 3.6>
+# print(list_1)
+# print(list_2)
 
-# ****Finding out documentation****
-print(dir(str))            # Lists all attributes and methods
-print(help(str))           # Lists all attributes and methods with documentation
-print(help(str.lower))     # Provides documentation of the specific attribute
+# Note: lists are mutable(changeable) and in the above example both list_1 and list_2 are same objects hence changing one list changes the other
+
+# ##### TUPLES #####
+# Note: Tuples are similar to lists
+# But, they are immutable and do not support list methods that mutate the list
+
+names_1 = ('Jhon', 'Jane', 'Ryu', 'Mario')
+names_2 = names_1
+
+# names_1[0] = 'Simon' --> Not Allowed in tuples
+
+
+# ##### SETS #####
+cs_courses = {'Math', 'Physics', 'Operating Systems',
+              'Programming', 'Physics', 'Math'}  # Removes Duplicates
+cse_courses = {'Math', 'Physics', 'Programming'}
+
+# ****Intersection, Union Differenct****
+print(cs_courses.intersection(cse_courses))
+print(cs_courses.difference(cse_courses))
+print(cs_courses.union(cse_courses))
+
+
+# Empty lists
+empty_list = []
+empty_list = list()
+
+# Empty tuples
+empty_tuples = ()
+empty_tuples = tuples()
+
+# Empty sets
+empty_sets = set()
+empty_sets = {}  # NOT AN EMPTY SET ---> BUT A DICTIONARY
