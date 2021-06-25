@@ -1,67 +1,54 @@
-# ****String****
-message1 = 'Hello World'        # String in Single Quotes
-message2 = "Hello World"        # String in Double Quotes
+# ****Lesson 4: Dictionaries****
 
-message3_1 = 'Annay\'s Plan'    # String of Single Quotes containing Single Quotes
-message3_2 = "Annay's Plan"     # String of Double Quotes containing Single Quotes
+student = {'name': 'Jhon', 'age': 23, 'courses': [
+    'Math', 'Science'], 14: 'this is 14'}
 
-message4_1 = '"Double" Trouble'  # String of Single Quotes containting Single Quotes
-# String of Double Quotes containing Double Quotes
-message4_2 = "\"Double\" Trouble"
+# ****Accessing Values****
+# Manually
+student['name']     # Returns the corresoponding value
+# student['grade']    # Throws an error when key doesn't exist
 
-# Notes: Backslash (\) is used as an escape Sequence
+# Via Method
+student.get('name')                 # Returns the corresoponding value
+student.get('grade')                # Returns 'None' when key not found
+student.get('grade', 'Not Found')   # Returns 'Not found' when key not found
 
-# ****Multiline String****
-paragraph = """
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-    when an unknown printer took a galley of type and scrambled it to make a type
-    specimen book. It has survived not only five centuries, but also the leap into 
-    electronic typesetting, remaining essentially unchanged. It was popularised in the 
-    1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-    and more recently with desktop publishing software like Aldus PageMaker including versions 
-    of Lorem Ipsum.
-"""
+# ****Updating Values*****
+# Manually
+student['grade'] = 3.8              # Adds/updates key-value
 
-# ****Slicing Strings****
-name = "Annay Paul"
-name[0]     # Returns the character on the 0th index
-name[1]     # Returns the character on the 1st index
-name[-1]    # Returns the character on the last index
-name[:4]    # Returns the set of characters from the beginning up to the 4th index but not including the 4th index
-name[2:]    # Returns the set of characters from the 2nd index till the end
-name[2:4]   # Returns the set of characters from the 2nd index till the 4th index but not including the 4th index
+# Via method
+student.update({'address': '321 python lane, rossum road',
+                'phone': '2211', 'age': 22})
 
-# ****Getting Length of Strings****
-len(name)   # len() -> built in function that returns the number of characters in the string
+# ****Removing Values****
+del student['address']  # Removes the specific key-value pair
+student.pop('phone')    # Removes the specific key-value pair
+# student.pop()           # Error, at least 1 argument needed
 
-# ****Converting into lower case****
-name_lower = name.lower()    # Returns a new string with all characters in lower case
+# ****Looping through Dicitonaries****
+# Default -> Access only the keys
+for key in student:
+    # print(key)
+    pass
 
-# ****Converting into upper case****
-name_upper = name.upper()    # Returns a new string with all characters in upper case
+# Explicit -> Access only the keys
+for key in student.keys():
+    # print(key)
+    pass
 
-# ****Counting how many times a character/substring appears****
-name.count('n')  # Returns the number of 'n' in the name 'Annay Paul'
-name.count('au')  # Returns the number of 'au' in the name 'Annay Paul'
+# Explicit -> Access only the values
+for value in student.values():
+    # print(value)
+    pass
 
-# ****Searching the index of a character/substring ****
-name.find('n')   # Returns the index of the 1st occurence of the letter 'n'
-name.find('au')  # Returns the index of the 1st occurence of the substring 'au'
-name.find('x')   # Returns -1 if not found
+# Explicit -> Access both
+for key, vaulue in student.items():
+    # print(key, value)
+    pass
 
-# ****Replacing a section of a string****
-message1_new = message1.replace('World', 'Universe')
-
-# ****String concatation****
-greeting = 'Hello'
-message = greeting + ', ' + name    # Returns 'Hello, Annay Paul'
-
-# ****Fomratted Strings****
-message = '{}, {}'.format(greeting, name)   # {} act as place holders
-message = f'{greeting}, {name}'  # f-strings, effective for python 3.6>
-
-# ****Finding out documentation****
-print(dir(str))            # Lists all attributes and methods
-print(help(str))           # Lists all attributes and methods with documentation
-print(help(str.lower))     # Provides documentation of the specific attribute
+# ****Getting length, keys, values and pairs****
+len(student)        # Returns length
+student.keys()      # Returns 'dict_keys' object
+student.values()    # Returns 'dict_values' object
+student.items()     # Returns 'dict_items' object
