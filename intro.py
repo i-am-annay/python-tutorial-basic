@@ -1,67 +1,56 @@
-# ****String****
-message1 = 'Hello World'        # String in Single Quotes
-message2 = "Hello World"        # String in Double Quotes
+# **** Lesson 5: If-Else, Conditions, Booleans****
+# If - Syntax
+language = 'Python'
+if language == 'Python':
+    # print('Language is python') <- This gets printed
+    pass
+elif language == 'Java':
+    # print('Language is Java')
+    pass
+else:
+    # print('Language is not matched')
+    pass
+# Logical Operators
+# and
+# or
+# not
 
-message3_1 = 'Annay\'s Plan'    # String of Single Quotes containing Single Quotes
-message3_2 = "Annay's Plan"     # String of Double Quotes containing Single Quotes
+user = 'Admin'
+logged_in = True
 
-message4_1 = '"Double" Trouble'  # String of Single Quotes containting Single Quotes
-# String of Double Quotes containing Double Quotes
-message4_2 = "\"Double\" Trouble"
+if user == 'Admin' and logged_in:
+    # print('Welcome admin') <- This Gets printed
+    pass
 
-# Notes: Backslash (\) is used as an escape Sequence
+if user == 'Admin' or logged_in:
+    # print('Welcome') <- This gets printed
+    pass
 
-# ****Multiline String****
-paragraph = """
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-    when an unknown printer took a galley of type and scrambled it to make a type
-    specimen book. It has survived not only five centuries, but also the leap into 
-    electronic typesetting, remaining essentially unchanged. It was popularised in the 
-    1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-    and more recently with desktop publishing software like Aldus PageMaker including versions 
-    of Lorem Ipsum.
-"""
+if not (user == 'Admin' or logged_in):
+    # print('Hello guest') <- This does not get printed
+    pass
 
-# ****Slicing Strings****
-name = "Annay Paul"
-name[0]     # Returns the character on the 0th index
-name[1]     # Returns the character on the 1st index
-name[-1]    # Returns the character on the last index
-name[:4]    # Returns the set of characters from the beginning up to the 4th index but not including the 4th index
-name[2:]    # Returns the set of characters from the 2nd index till the end
-name[2:4]   # Returns the set of characters from the 2nd index till the 4th index but not including the 4th index
+# ****Object Identity Checker****
+a = [1, 2, 3]
+b = [1, 2, 3]
 
-# ****Getting Length of Strings****
-len(name)   # len() -> built in function that returns the number of characters in the string
+c = [3, 4, 5]
+d = c
 
-# ****Converting into lower case****
-name_lower = name.lower()    # Returns a new string with all characters in lower case
+str1 = 'Annay'
+str2 = 'Annay'
+str3 = str1
+condition1 = (id(a) == id(b))   # Different objects in memory -> False (*)
+condition2 = (a == b)           # Same objects in value       -> True
+condition3 = (id(c) == id(d))   # Same objects in memory      -> True
+condition4 = (c == d)           # Same objects in value       -> True
 
-# ****Converting into upper case****
-name_upper = name.upper()    # Returns a new string with all characters in upper case
+condition5 = (id(str1) == id(str2))  # Same objects in memory -> True (*)
+condition6 = (str1 == str2)          # Same objects in value  -> True
+condition7 = (str1 == str3)          # Same objects in value  -> True
+condition8 = (id(str3) == id(str2))  # Same objects in memory -> True
 
-# ****Counting how many times a character/substring appears****
-name.count('n')  # Returns the number of 'n' in the name 'Annay Paul'
-name.count('au')  # Returns the number of 'au' in the name 'Annay Paul'
 
-# ****Searching the index of a character/substring ****
-name.find('n')   # Returns the index of the 1st occurence of the letter 'n'
-name.find('au')  # Returns the index of the 1st occurence of the substring 'au'
-name.find('x')   # Returns -1 if not found
-
-# ****Replacing a section of a string****
-message1_new = message1.replace('World', 'Universe')
-
-# ****String concatation****
-greeting = 'Hello'
-message = greeting + ', ' + name    # Returns 'Hello, Annay Paul'
-
-# ****Fomratted Strings****
-message = '{}, {}'.format(greeting, name)   # {} act as place holders
-message = f'{greeting}, {name}'  # f-strings, effective for python 3.6>
-
-# ****Finding out documentation****
-print(dir(str))            # Lists all attributes and methods
-print(help(str))           # Lists all attributes and methods with documentation
-print(help(str.lower))     # Provides documentation of the specific attribute
+# Note: id() -> method returns the unique identity of the object
+# Note: (*) immutable objects are created once and have a fixed id for all variables
+# Note: (*) mutable objects are created with each unique assingment and have a different id for different variables
