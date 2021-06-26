@@ -1,7 +1,17 @@
-def hello_func(greeting, name="you"):
-    return '{}, {}'.format(greeting, name)
+# **** Lesson 8: Exploring Different Modules from Standard Library ****
 
+import sys
+import os
+import datetime
+import calendar
 
-def student_info(*args, **kwargs):
-    print(args)
-    print(kwargs)
+print(sys.path)
+print(os.getcwd())
+print(os.get_exec_path())
+
+today = datetime.date.today()
+print(today)
+print(type(today))
+
+print(calendar.isleap(2017))
+print(calendar.isleap(2020))
